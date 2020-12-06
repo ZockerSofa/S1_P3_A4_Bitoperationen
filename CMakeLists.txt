@@ -3,4 +3,4 @@ project(S1_P3_A4_Bitoperationen C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(S1_P3_A4_Bitoperationen main.c header.h bit_test.c bit_set-bit_clear.c)
+add_executable(S1_P3_A4_Bitoperationen main.c header.h status.c input.c)

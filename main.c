@@ -1,27 +1,19 @@
 #include "header.h"
+/**@param lampen beinhaltet alle lampen zustaende*/
+unsigned char lampen;
 
+/**@function main wechselt zwischen der Aus- und Eingabe in einer endlosschleife, die mit eingabe
+ * "exit" beendet wird*/
 int main() {
-    unsigned char Lampen;
-    for (int i = 0; i <= 7; i++) {
-        bit_set(&Lampen, i);
-    }
-    char eingabe[MAX];
+    char eingabe[CHAR_BIT];
     do {
-        printf("| L1 | L2 | L3 | L4 | L5 | L6 | L7 | L8 | \n");
-        for (int i = 0; i <= 7; i++) {
-            if (bit_test(Lampen, i) == 0) {
-                printf("| X  ");
-            } else
-                printf("| -  ");
+        lamps(lampen);                              //Gibt Lampen Status aus
+        fgets(eingabe, CHAR_BIT, stdin);
+        fflush(stdin);
+        if(strncmp(eingabe,"exit",4) == 0){         //Vergleicht eingabe mit 'exit'
+            break;                                  //bricht programm ab bei Eingabe von 'exit'
         }
-        printf("|\n");
-        fgets(eingabe, MAX, stdin);
-
-        if (eingabe[1] == 'X') {
-            bit_clear(&Lampen, eingabe[0] - 49);
-        } else
-            bit_set(&Lampen, eingabe[0] - 49);
-    }
-    while (eingabe[1] == 'X' || eingabe[1] == '-');
+        lampen = insert(eingabe, lampen);           //fragt Benutzer eingabe ab und veraendert dementsprechend den char 'Lampen'
+    }while(1);
+    return 0;
 }
-

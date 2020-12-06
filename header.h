@@ -6,12 +6,13 @@
 #define S1_P3_A4_BITOPERATIONEN_HEADER_H
 
 #include <stdio.h>
+#include <limits.h>
 #include <stdlib.h>
-#define MAX 9
-void bit_clear(unsigned char*val, unsigned char bit);
+#include <string.h>
 
-void bit_set(unsigned char *val, unsigned char bit);
-
-int bit_test(unsigned char val, unsigned char bit);
+/**@function lamps gibt den Lampen-Status aus durch bit-shifting*/
+void lamps(char);
+/**@function insert fragt Benutzer-Eingabe ab und veraendert dementsprechend den char "lampen"*/
+int insert(char* einfuegen, char lampen);
 
 #endif //S1_P3_A4_BITOPERATIONEN_HEADER_H
